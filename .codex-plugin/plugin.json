@@ -1,0 +1,41 @@
+{
+  "name": "devflow-kit",
+  "version": "0.1.0",
+  "description": "Harness engineering workflows for Codex-driven software delivery.",
+  "author": {
+    "name": "zela-boya",
+    "email": "[TODO: contact email]",
+    "url": "https://github.com/zela-boya"
+  },
+  "homepage": "https://github.com/zela-boya/devflow-kit",
+  "repository": "https://github.com/zela-boya/devflow-kit",
+  "license": "Apache-2.0",
+  "keywords": [
+    "codex",
+    "harness-engineering",
+    "workflow",
+    "code-review",
+    "testing"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Devflow Kit",
+    "shortDescription": "Structured Codex workflows from requirements to PR.",
+    "longDescription": "Devflow Kit provides harness engineering workflows for converting requirements into reviewed, tested code changes with durable artifacts at each stage.",
+    "developerName": "zela-boya",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/zela-boya/devflow-kit",
+    "privacyPolicyURL": "[TODO: privacy policy URL]",
+    "termsOfServiceURL": "[TODO: terms of service URL]",
+    "defaultPrompt": [
+      "Analyze this requirement and produce a spec.",
+      "Implement this plan with tests and review.",
+      "Review this change and prepare a PR."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

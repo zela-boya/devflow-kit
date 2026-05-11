@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+usage() {
+  cat <<'USAGE'
+devflow <command>
+
+Commands:
+  validate-plugin     Validate the plugin scaffold.
+  validate-artifacts  Validate expected workflow artifact files.
+USAGE
+}
+
+case "${1:-}" in
+  validate-plugin)
+    exec "$ROOT/scripts/validate-plugin.sh"
+    ;;
+  validate-artifacts)
+    exec "$ROOT/scripts/validate-artifacts.sh"
+    ;;
+  ""|-h|--help|help)
+    usage
+    ;;
+  *)
+    echo "unknown command: $1" >&2
+    usage >&2
+    exit 2
+    ;;
+esac

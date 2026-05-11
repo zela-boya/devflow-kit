@@ -15,6 +15,7 @@ required_paths=(
   "templates/brd.md"
   "templates/hld.md"
   "templates/mld.md"
+  "templates/lld.md"
   "templates/requirements.md"
   "templates/spec.md"
   "templates/implementation-plan.md"

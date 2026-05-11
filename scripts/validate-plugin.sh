@@ -13,6 +13,7 @@ required_paths=(
   "skills/review-changes/SKILL.md"
   "skills/open-pr/SKILL.md"
   "templates/brd.md"
+  "templates/hld.md"
   "templates/requirements.md"
   "templates/spec.md"
   "templates/implementation-plan.md"

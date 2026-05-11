@@ -8,12 +8,17 @@ usage() {
 devflow <command>
 
 Commands:
+  design <command>    Run design-document workflows.
   validate-plugin     Validate the plugin scaffold.
   validate-artifacts  Validate expected workflow artifact files.
 USAGE
 }
 
 case "${1:-}" in
+  design)
+    shift
+    exec "$ROOT/scripts/devflow-design.sh" "$@"
+    ;;
   validate-plugin)
     exec "$ROOT/scripts/validate-plugin.sh"
     ;;

@@ -12,6 +12,8 @@ required_paths=(
   "skills/test-changes/SKILL.md"
   "skills/review-changes/SKILL.md"
   "skills/open-pr/SKILL.md"
+  "skills/dfd-gen-brd/SKILL.md"
+  "scripts/devflow-design.sh"
   "templates/brd.md"
   "templates/hld.md"
   "templates/mld.md"

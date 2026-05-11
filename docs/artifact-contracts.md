@@ -2,6 +2,16 @@
 
 Artifacts make the workflow auditable and resumable. Each stage should consume the previous artifact and produce the next one.
 
+Artifacts are the source of truth for Devflow Kit. They should capture decisions, assumptions, acceptance criteria, verification evidence, and residual risk so the workflow can continue without relying on chat history.
+
+## Contract Rules
+
+- Every artifact must state its purpose and scope.
+- Every artifact must separate confirmed facts from assumptions or open questions.
+- A downstream artifact must reference or preserve the decisions it depends on.
+- An artifact with blocking open questions cannot be used to authorize the next stage.
+- Verification evidence must name the command or check that produced it.
+
 ## Requirements
 
 - Location: `docs/devflow/requirements.md`

@@ -10,17 +10,19 @@ The conversation is temporary.
 The code is derived.
 ```
 
-Conversation is useful for exploration and clarification, but it is not the durable state of the workflow. Durable state lives in reviewed artifacts: requirements, specs, implementation plans, test reports, code reviews, and PR descriptions.
+Conversation is useful for exploration and clarification, but it is not the durable state of the workflow. Durable state lives in reviewed artifacts: BRDs, HLDs, MLDs, LLDs, TCDs, test reports, code reviews, and PR descriptions.
 
 The plugin should make each phase explicit:
 
-1. Convert raw intent into requirements.
-2. Convert requirements into a reviewed spec.
-3. Convert the spec into an executable plan.
-4. Implement only the approved plan.
-5. Verify changes with concrete commands.
-6. Review the diff before commit or PR.
-7. Create a PR with traceable evidence.
+1. Convert raw intent into a BRD.
+2. Expand the BRD into one or more HLDs.
+3. Expand each HLD into one or more MLDs.
+4. Expand each MLD into one or more LLDs.
+5. Derive TCDs from the design document tree.
+6. Implement only from approved LLDs and TCDs.
+7. Verify changes with concrete commands.
+8. Review the diff before commit or PR.
+9. Create a PR with traceable evidence.
 
 ## Principles
 
@@ -34,8 +36,9 @@ The plugin should make each phase explicit:
 
 ## Implications
 
-- Requirements must become an artifact before design starts.
-- Specs must describe the intended behavior before planning starts.
-- Plans must define the implementation path before code changes start.
+- Business requirements must become a BRD before design expansion starts.
+- HLD, MLD, and LLD documents refine the same intent from macro to micro.
+- LLDs must be concrete enough to guide code changes.
+- TCDs must be concrete enough to verify the implementation.
 - Test reports and code reviews must capture evidence before PR creation.
 - A paused workflow should be recoverable from artifacts without relying on chat history.

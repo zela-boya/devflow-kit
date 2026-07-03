@@ -8,17 +8,17 @@ Create a Devflow Kit skill that generates a complete design document tree from o
 BRD -> HLD -> MLD -> LLD
 ```
 
-The skill should reduce the time cost of invoking `dfd:gen-hld`, `dfd:gen-mld`, and `dfd:gen-lld` separately while preserving the same document gates and design quality.
+The skill should reduce the time cost of invoking `dfd:hld`, `dfd:mld`, and `dfd:lld` separately while preserving the same document gates and design quality.
 
 ## Trigger
 
 The new skill is named `gen-design-tree` and is used when the user invokes:
 
 ```text
-dfd:gen-design-tree <BRD path>
-dfd:gen-design-tree <BRD id>
-dfd:gen-design-tree latest
-dfd:gen-design-tree 最新 BRD
+dfd:design-tree <BRD path>
+dfd:design-tree <BRD id>
+dfd:design-tree latest
+dfd:design-tree 最新 BRD
 ```
 
 The input is always an existing accepted BRD. The skill does not accept raw business text and does not generate a BRD.
@@ -58,7 +58,7 @@ This keeps the single-layer and tree-generation behaviors aligned when HLD, MLD,
 
 ## Workflow
 
-1. Parse the argument after `dfd:gen-design-tree`.
+1. Parse the argument after `dfd:design-tree`.
 2. Resolve exactly one BRD from a readable path, BRD ID, `latest`, or `最新 BRD`.
 3. Read the BRD and load the HLD, MLD, and LLD skill rules.
 4. Apply the BRD scope gate from `gen-hld`.
@@ -117,7 +117,7 @@ The new skill follows existing document rules:
 Add a command shim:
 
 ```text
-commands/gen-design-tree.md
+commands/design-tree.md
 ```
 
 The command should instruct Codex to read `skills/gen-design-tree/SKILL.md`, pass `$ARGUMENTS` as the BRD selector, generate the design tree, validate with the available design validator, and stop at the LLD review gate.
@@ -125,7 +125,7 @@ The command should instruct Codex to read `skills/gen-design-tree/SKILL.md`, pas
 The installer should copy this command to:
 
 ```text
-~/.codex/commands/dfd:gen-design-tree.md
+~/.codex/commands/dfd:design-tree.md
 ```
 
 ## Validation
@@ -133,7 +133,7 @@ The installer should copy this command to:
 Implementation should update existing validation coverage so the plugin scaffold requires:
 
 - `skills/gen-design-tree/SKILL.md`
-- `commands/gen-design-tree.md`
+- `commands/design-tree.md`
 
 Installation tests should verify that the new command shim is installed.
 
@@ -141,7 +141,7 @@ The current `scripts/devflow design validate` mostly validates BRD structure. Th
 
 ## Acceptance Criteria
 
-- Users can invoke `dfd:gen-design-tree <BRD selector>` to generate HLD, MLD, and LLD drafts from one accepted BRD.
+- Users can invoke `dfd:design-tree <BRD selector>` to generate HLD, MLD, and LLD drafts from one accepted BRD.
 - The workflow uses centralized brainstorming to resolve all blocking cross-layer questions before writing files.
 - The skill reuses existing HLD, MLD, and LLD rules rather than maintaining duplicated copies.
 - The workflow stops at the LLD review gate.

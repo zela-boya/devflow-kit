@@ -15,8 +15,8 @@ The skill should make LLD-to-code execution faster without bypassing implementat
 The new skill is named `implement-lld` and is used when the user invokes:
 
 ```text
-dfd:implement-lld <LLD path>
-dfd:implement-lld <LLD id>
+dfi:lld <LLD path>
+dfi:lld <LLD id>
 ```
 
 The skill implements exactly one LLD per run. It does not accept multiple LLDs by default and does not support `latest` selection, because implementing the wrong LLD is higher risk than generating a draft document.
@@ -55,7 +55,7 @@ The new skill owns the LLD-specific bridge:
 
 ## Workflow
 
-1. Parse the argument after `dfd:implement-lld`.
+1. Parse the argument after `dfi:lld`.
 2. Resolve exactly one LLD from a readable path or LLD ID.
 3. Read the selected LLD.
 4. Read parent MLD, HLD, and BRD only when needed to clarify inherited requirements, boundaries, success criteria, or constraints.
@@ -173,7 +173,7 @@ The report must include:
 Add a command shim:
 
 ```text
-commands/implement-lld.md
+commands/implementation-lld.md
 ```
 
 The command should read `skills/implement-lld/SKILL.md`, pass `$ARGUMENTS` as the LLD selector, execute the LLD-to-code workflow, and stop at the code review gate.
@@ -181,7 +181,7 @@ The command should read `skills/implement-lld/SKILL.md`, pass `$ARGUMENTS` as th
 The installer should copy this command to:
 
 ```text
-~/.codex/commands/dfd:implement-lld.md
+~/.codex/commands/dfi:lld.md
 ```
 
 ## Validation
@@ -189,14 +189,14 @@ The installer should copy this command to:
 Implementation should update plugin validation and install coverage for:
 
 - `skills/implement-lld/SKILL.md`
-- `commands/implement-lld.md`
-- The installed `dfd:implement-lld.md` command shim.
+- `commands/implementation-lld.md`
+- The installed `dfi:lld.md` command shim.
 
 The skill itself should run project-specific verification commands from the generated implementation plan. The plugin repository tests should verify that the skill and command are present and installable.
 
 ## Acceptance Criteria
 
-- Users can invoke `dfd:implement-lld <LLD path or ID>` to implement exactly one accepted LLD.
+- Users can invoke `dfi:lld <LLD path or ID>` to implement exactly one accepted LLD.
 - Blocking implementation questions are resolved through centralized brainstorming before code edits.
 - The workflow generates or updates `docs/devflow/implementation-plan.md`.
 - The workflow generates one TCD under the BRD design tree.
